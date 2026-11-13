@@ -8,7 +8,7 @@ workflows:
     instance_type: mac_mini_m2  # free plan: only the first 500 Mac mini M2 minutes/month are $0; ALL Linux/Windows instances cost $0.045/min and need billing enabled
     environment:
       node: 24  # MUST be 22.6+ (23.6+ stable): project uses TypeScript 7, which dropped the classic compiler API — the Capacitor CLI loads capacitor.config.ts via Node's native TS stripping, unavailable on Node 20 (sync step failed with ERR_UNKNOWN_FILE_EXTENSION)
-      java: 17
+      java: 21  # MUST be 21: Capacitor 8.6.2's android library compiles with source release 21 — JDK 17 fails with "invalid source release: 21" (build #9, :capacitor-android:compileDebugJavaWithJavac)
     scripts:
       - name: Install dependencies
         script: |
