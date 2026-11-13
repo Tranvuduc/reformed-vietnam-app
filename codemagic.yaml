@@ -1,0 +1,23 @@
+# Codemagic build config — Reformed Vietnam app (Capacitor wrapper)
+# Build Android debug APK on Codemagic cloud. No signing keys needed for debug.
+# Duc downloads the APK from the Codemagic dashboard and installs it directly.
+workflows:
+  android-debug:
+    name: Android Debug APK
+    max_build_duration: 60
+    instance_type: linux_x2
+    environment:
+      node: 20
+      java: 17
+    scripts:
+      - name: Install dependencies
+        script: |
+          npm ci
+      - name: Sync Capacitor Android
+        script: |
+          npx cap sync android
+      - name: Build debug APK
+        script: |
+          cd android && ./gradlew assembleDebug
+    artifacts:
+      - android/app/build/outputs/apk/debug/*.apk

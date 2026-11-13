@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Reformed Vietnam</string>
+    <string name="title_activity_main">Reformed Vietnam</string>
+    <string name="package_name">com.reformedvietnam.app</string>
+    <string name="custom_url_scheme">com.reformedvietnam.app</string>
+</resources>
