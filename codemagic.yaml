@@ -7,7 +7,7 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2  # free plan: only the first 500 Mac mini M2 minutes/month are $0; ALL Linux/Windows instances cost $0.045/min and need billing enabled
     environment:
-      node: 20
+      node: 24  # MUST be 22.6+ (23.6+ stable): project uses TypeScript 7, which dropped the classic compiler API — the Capacitor CLI loads capacitor.config.ts via Node's native TS stripping, unavailable on Node 20 (sync step failed with ERR_UNKNOWN_FILE_EXTENSION)
       java: 17
     scripts:
       - name: Install dependencies
